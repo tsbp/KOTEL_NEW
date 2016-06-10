@@ -104,21 +104,13 @@ void ICACHE_FLASH_ATTR timeIncrement(void)
 void ICACHE_FLASH_ATTR timeUpdate(char *aPtr)
 {
 	ets_uart_printf("Time update: %s\r\n", aPtr);
-	date_time.DATE.year  =                   (aPtr[2]  - '0')*1000 +
-	                                         (aPtr[3]  - '0')*100  +
-	                                         (aPtr[4]  - '0')*10   +
-	                                         (aPtr[5]  - '0');
-	                  date_time.DATE.month = (aPtr[7]  - '0')*10 +
-	                                         (aPtr[8]  - '0' - 1);
-	                  date_time.DATE.day   = (aPtr[10] - '0')*10 +
-	                                         (aPtr[11] - '0');
+					  date_time.DATE.year  = aPtr[2] + 2000;
+	                  date_time.DATE.month = aPtr[3];
+	                  date_time.DATE.day   = aPtr[4];
 
-	                  date_time.TIME.hour =  (aPtr[13] - '0')*10 +
-	                                         (aPtr[14] - '0');
-	                  date_time.TIME.min   = (aPtr[16] - '0')*10 +
-	                                         (aPtr[17] - '0');
-	                  date_time.TIME.sec   = (aPtr[19] - '0')*10 +
-	                                         (aPtr[20] - '0');
+	                  date_time.TIME.hour =  aPtr[5];
+	                  date_time.TIME.min   = aPtr[6];
+	                  date_time.TIME.sec   = aPtr[7];
 }
 //=============================================================================
 u_CONFIG configs /*= {

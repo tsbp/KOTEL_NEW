@@ -17,8 +17,8 @@ void setup_wifi_ap_mode(void)
 		wifi_softap_dhcps_stop();
 		os_memset(apconfig.ssid, 0, sizeof(apconfig.ssid));
 		os_memset(apconfig.password, 0, sizeof(apconfig.password));
-		apconfig.ssid_len = os_sprintf(apconfig.ssid, configs.hwSettings.wifi.SSID);//"HA-HA-HA");
-		os_sprintf(apconfig.password, "%s", configs.hwSettings.wifi.SSID_PASS);//"qwertyuiop");
+		apconfig.ssid_len = os_sprintf(apconfig.ssid, "voodoo");//"HA-HA-HA");
+		os_sprintf(apconfig.password, "%s","eminem82");//"qwertyuiop");
 		apconfig.authmode = configs.hwSettings.wifi.auth;//AUTH_OPEN;//AUTH_WPA_WPA2_PSK;
 		apconfig.ssid_hidden = 0;
 		apconfig.channel = 7;

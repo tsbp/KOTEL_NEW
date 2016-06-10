@@ -9,19 +9,39 @@
 //=============================================================
 
 //================== Commands ====================================================
+#define OK_ANS							(0xAA)
+#define BAD_ANS							(0xEE)
 
-#define BROADCASTY_SYSTEM_DATA			(10) // (pusrdata[0] == 'R' && pusrdata[1] == 'T' && pusrdata[2] == 'M'	&& pusrdata[3] == 'P')
-#define HARDWARE_CFG					(11) //(pusrdata[0] == 'H' && pusrdata[1] == 'W' && pusrdata[2] == 'C' && pusrdata[3] == 'F' && pusrdata[4] == 'G')
+#define BROADCAST_DATA					(0x10)
+#define HARDWARE_CFG					(0x11)
 
-#define PLOT_DATA						(20)
+#define PLOT_DATA						(0x20)
+#define PLOT_DATA_ANS					(0x21)
 
-#define READ_DAY_CONFIGS				(30)	//========= read day configs =========================== 		if (pusrdata[0] == 'C' && pusrdata[1] == 'O' && pusrdata[2] == 'N'	&& pusrdata[3] == 'F')
-#define SAVE_DAY_CONFIGS				(31)	//========= save day configs =========================== 		if (pusrdata[0] == 'C' && pusrdata[1] == 'S' && pusrdata[2] == 'A'	&& pusrdata[3] == 'V')
-#define READ_WEEK_CONFIGS				(32)	//========= read week configs ===========================		if (pusrdata[0] == 'W' && pusrdata[1] == 'E' && pusrdata[2] == 'E' && pusrdata[3] == 'K')
-#define SAVE_WEEK_CONFIGS				(33)	//========= save week configs ===========================		if (pusrdata[0] == 'C' && pusrdata[1] == 'S' && pusrdata[2] == 'A' && pusrdata[3] == 'W')
-#define READ_USTANOVKI					(34) 	//========= read ustanovki ===========================  		if (pusrdata[0] == 'G' && pusrdata[1] == 'U' && pusrdata[2] == 'S' 	&& pusrdata[3] == 'T')
-#define SAVE_USTANOVKI					(35)	//========= save ustanovki ===========================  		if (pusrdata[0] == 'S' && pusrdata[1] == 'U' && pusrdata[2] == 'S' && pusrdata[3] == 'T')
+#define READ_WEEK_CONFIGS				(0x30)
+#define READ_WEEK_CONFIGS_ANS			(0x31)
+#define SAVE_WEEK_CONFIGS				(0x32)
 
+#define READ_DAY_CONFIGS				(0x33)
+#define READ_DAY_CONFIGS_ANS			(0x34)
+#define SAVE_DAY_CONFIGS				(0x35)
+
+#define READ_USTANOVKI					(0x34) 	//========= read ustanovki ===========================  		if (pusrdata[0] == 'G' && pusrdata[1] == 'U' && pusrdata[2] == 'S' 	&& pusrdata[3] == 'T')
+#define SAVE_USTANOVKI					(0x35)	//========= save ustanovki ===========================  		if (pusrdata[0] == 'S' && pusrdata[1] == 'U' && pusrdata[2] == 'S' && pusrdata[3] == 'T')
+
+//======================================================================================
+// PLOT_DATA
+//=================================
+//   request data
+//   +--------+------+-------+-----+------+-----+-----+
+//   |  DTYPE | year | month | day | hour | min | sec |
+//   +--------+------+-------+-----+------+-----+-----+
+//            +----------- only in first -------------+
+//   DTYPE
+//   BIT7 - 0 - in, 1 - out
+//   BIT3..BIT0 - pack number
+//=================================
+// ansver
 //======================================================================================
 
 void ICACHE_FLASH_ATTR UDP_Init();

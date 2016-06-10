@@ -51,9 +51,10 @@ static void ICACHE_FLASH_ATTR setup(void)
 
 	//saveConfigs();
 
+	setup_wifi_ap_mode();
 
-	if     (configs.hwSettings.wifi.mode == SOFTAP_MODE) 		setup_wifi_ap_mode();
-	else if(configs.hwSettings.wifi.mode == STATION_MODE)		setup_wifi_st_mode();
+//	if     (configs.hwSettings.wifi.mode == SOFTAP_MODE) 		setup_wifi_ap_mode();
+//	else if(configs.hwSettings.wifi.mode == STATION_MODE)		setup_wifi_st_mode();
 
 	ets_uart_printf("configs.nastr.SSID = %s\r\n", configs.hwSettings.wifi.SSID);
 	ets_uart_printf("configs.nastr.SSID_PASS = %s\r\n", configs.hwSettings.wifi.SSID_PASS);
